@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Personal Dashboard</title>
+
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons: Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div id="app-container">
+        <!-- Header/Top Bar (Dynamic) -->
+        <header id="app-header">
+            <h1 id="header-title">Dashboard</h1>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="main-content">
+            <!-- Views will be dynamically injected here -->
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="#dashboard" class="nav-item active" data-tab="dashboard">
+                <i class="ph ph-squares-four"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#health" class="nav-item" data-tab="health">
+                <i class="ph ph-heartbeat"></i>
+                <span>Health</span>
+            </a>
+            <a href="#work" class="nav-item" data-tab="work">
+                <i class="ph ph-briefcase"></i>
+                <span>Work</span>
+            </a>
+            <a href="#settings" class="nav-item" data-tab="settings">
+                <i class="ph ph-gear"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Scripts -->
+    <script src="capacitor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
+    <script>
+        window.addEventListener('error', function (e) {
+            document.body.innerHTML += '<div style="color:red; background:rgba(0,0,0,0.8); padding:10px; font-size:16px; position:fixed; z-index:9999; top:0; left:0; right:0;">ERROR: ' + e.message + ' at ' + e.filename + ':' + e.lineno + '</div>';
+        });
+        window.addEventListener('unhandledrejection', function (e) {
+            document.body.innerHTML += '<div style="color:red; background:rgba(0,0,0,0.8); padding:10px; font-size:16px; position:fixed; z-index:9999; top:50px; left:0; right:0;">PROMISE ERROR: ' + e.reason + '</div>';
+        });
+    </script>
+    <script type="module" src="js/app.bundle.js"></script>
+</body>
+
+</html>

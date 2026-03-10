@@ -1,0 +1,6 @@
+{
+  "appId": "com.psaitech.dashboard",
+  "appName": "Personal Dashboard",
+  "webDir": "www",
+  "bundledWebRuntime": true
+}

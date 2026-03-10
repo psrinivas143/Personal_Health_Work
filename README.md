@@ -24,7 +24,7 @@
 
 ## 📸 Screenshots
 
-> *(Add your screenshots here)*
+
 
 | Dashboard | Health Tab | Work Tab |
 |---|---|---|
@@ -123,4 +123,19 @@ MIT License — feel free to use, modify, and distribute.
 
 ## 👨‍💻 Author
 
-Built with ❤️ using Capacitor + Vanilla JavaScript.
+**Srinivas P** ([@psrinivas143](https://github.com/psrinivas143))
+
+---
+
+## 🤖 Built With AI Assistance
+
+This app was designed and developed with the help of modern AI and developer tools:
+
+| Tool | Role |
+|---|---|
+| 🤖 **[Antigravity AI](https://antigravity.dev)** (by Google DeepMind) | AI pair-programmer — wrote code, debugged native plugins, and solved Capacitor integration issues |
+| 🤖 **AI-assisted code generation** | HTML, CSS, JavaScript architecture and all view modules |
+| 🛠️ **Android Studio** | Native Android build, signing, and deployment |
+| 📱 **Capacitor** | Bridged web app to native Android hardware APIs |
+
+> _"Built with the power of AI pair programming — showing that modern AI tools can take an idea from concept to a fully functional native Android app."_

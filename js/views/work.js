@@ -1,4 +1,4 @@
-import { getTodayDate, getWorkDay, saveWorkEntry, getUserProfile } from '../storage.js';
+import { getTodayDate, getWorkDay, saveWorkEntry, getUserProfile, deleteWorkEntry } from '../storage.js';
 import { getCurrentWeekDates, getMonthDates, formatDuration, getDurationMins, aggregateWorkData, downloadFile } from '../utils.js';
 
 let currentSubTab = 'journal';
@@ -133,7 +133,12 @@ function renderJournalView() {
     <div class="card" style="padding: 12px; margin-bottom: 8px; border-left: 4px solid var(${task.status === 'Done' ? '--success' : task.status === 'In Progress' ? '--warning' : '--border-color'})">
        <div class="flex justify-between items-center mb-2">
          <strong style="font-size:1rem;">${task.title}</strong>
-         <span class="text-sm text-muted">${task.startTime} - ${task.endTime}</span>
+         <div class="flex items-center gap-2">
+           <span class="text-sm text-muted">${task.startTime} - ${task.endTime}</span>
+           <button class="btn-delete-task" data-id="${task.id}" style="background:none; border:none; color:var(--danger); font-size:1.2rem; cursor:pointer; padding:0 4px;">
+             <i class="ph ph-trash"></i>
+           </button>
+         </div>
        </div>
        <div class="text-sm text-muted mb-2">
          <span style="font-weight:600; color:var(--primary);"><i class="ph ph-map-pin"></i> ${task.fromLoc || '-'} &rarr; ${task.toLoc || '-'}</span> &bull; 
@@ -236,6 +241,17 @@ function attachEvents(container) {
         renderWork(container);
       });
     }
+
+    // Attach Delete Events
+    container.querySelectorAll('.btn-delete-task').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const entryId = e.currentTarget.getAttribute('data-id');
+        if (confirm("Are you sure you want to delete this activity?")) {
+          deleteWorkEntry(journalActiveDate, entryId);
+          renderWork(container); // Re-render journal view dynamically
+        }
+      });
+    });
   }
   else if (currentSubTab === 'weekly') {
     const weekSelector = document.getElementById('week-selector');

@@ -80,6 +80,21 @@ export function updateWorkEntry(dateStr, updatedEntry) {
     }
 }
 
+// Delete an entry from a specific date by its ID
+export function deleteWorkEntry(dateStr, entryId) {
+    const data = getWorkData();
+    if (!data[dateStr]) return;
+
+    // Filter out the item with the matching ID
+    const initialLength = data[dateStr].length;
+    data[dateStr] = data[dateStr].filter(w => w.id !== entryId);
+
+    // Only save if something was actually deleted
+    if (data[dateStr].length < initialLength) {
+        localStorage.setItem(WORK_KEY, JSON.stringify(data));
+    }
+}
+
 // ----- USER PROFILE -----
 export function getUserProfile() {
     return JSON.parse(localStorage.getItem('pd_user_profile') || '{"name":"","designation":"","hq":"","radius":5}');
